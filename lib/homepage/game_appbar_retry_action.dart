@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tpc_assignment/assets/assets_helper.dart';
+import 'package:tpc_assignment/homepage/homepage_controller.dart';
 
-class GameAppBarRetry extends StatelessWidget {
+class GameAppBarRetry extends GetView<HomepageController> {
   const GameAppBarRetry({super.key});
 
   @override
@@ -18,25 +20,30 @@ class GameAppBarRetry extends StatelessWidget {
           child: Padding(
             padding:
                 const EdgeInsets.symmetric(horizontal: 14.0, vertical: 8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "Reset Game",
-                  style: GoogleFonts.silkscreen(
-                    textStyle: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400),
+            child: GestureDetector(
+              onTap: controller.reset,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Reset Game",
+                    style: GoogleFonts.silkscreen(
+                      textStyle: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400),
+                    ),
                   ),
-                ),
-                const SizedBox(
-                  width: 4,
-                ),
-                SvgPicture.asset(
-                  AssetHelper.actionLoader,
-                ),
-              ],
+                  const SizedBox(
+                    width: 4,
+                  ),
+                  SvgPicture.asset(
+                    AssetHelper.actionLoader,
+                    height: 20,
+                    width: 20,
+                  ),
+                ],
+              ),
             ),
           ),
         ),

@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:tpc_assignment/homepage/homepage_controller.dart';
 
-class GameAppBarTimer extends StatelessWidget {
+class GameAppBarTimer extends GetView<HomepageController> {
   const GameAppBarTimer({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      "00:30",
-      style: TextStyle(color: Colors.white),
-    );
+    return Obx(() {
+      controller.timerDuration.value;
+      return Text(
+        controller.getDisplayableTimerValue(),
+        style: const TextStyle(color: Colors.white),
+      );
+    });
   }
 }
