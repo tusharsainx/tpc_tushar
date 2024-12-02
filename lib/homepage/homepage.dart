@@ -111,8 +111,8 @@ class GameHomepage extends GetView<HomepageController> {
           ),
           const Spacer(),
           Container(
-            width: Get.height * 0.8,
-            height: Get.width * 0.35,
+            width: MediaQuery.of(context).size.height  * 0.8,
+            height: MediaQuery.of(context).size.width * 0.35,
             decoration: BoxDecoration(
                 color: const Color(0xffDBA600),
                 borderRadius: BorderRadius.circular(35)),
