@@ -35,13 +35,13 @@ class GameAppBarRetry extends GetView<HomepageController> {
                     ),
                   ),
                   const SizedBox(
-                    width: 4,
+                    width: 5,
                   ),
-                  SvgPicture.asset(
-                    AssetHelper.actionLoader,
-                    height: 20,
-                    width: 20,
-                  ),
+                  const Icon(
+                    FontAwesomeIcons.rotateRight,
+                    color: Colors.white,
+                    size: 14,
+                  )
                 ],
               ),
             ),

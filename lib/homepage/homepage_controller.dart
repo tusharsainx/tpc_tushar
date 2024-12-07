@@ -1,4 +1,7 @@
 import 'dart:async';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:tpc_assignment/homepage/pair.dart';
 
@@ -26,6 +29,7 @@ class HomepageController extends GetxController {
     timer?.cancel();
     currentTurn.value = 0;
     timerDuration.value = 30;
+    counter = 42;
   }
 
   String getDisplayableTimerValue() {
@@ -79,45 +83,56 @@ class HomepageController extends GetxController {
 
   void dropDisk(int index, int turn) {
     if (currentTurn.value == 0) {
-      Get.snackbar("Start the game first", "Game not started");
+      Get.snackbar("Start the game first", "Game not started",
+          backgroundColor: const Color(0xffDBA600));
       return;
     }
+    bool ans = false;
     if (isSpacePresentInColumn(index)) {
       int color = turn == 2 ? 0xff90EE90 : 0xff8B0000;
-      colors[index] = color;
-      slotState[index] = turn;
+      Pair coord = findCoord(index);
+      for (int i = 5; i >= coord.x; i--) {
+        if (slotState[7 * i + coord.y] == 0) {
+          colors[7 * i + coord.y] = color;
+          slotState[7 * i + coord.y] = turn;
+          ans = checkWinner(7 * i + coord.y, turn);
+          break;
+        }
+      }
       counter--;
       changeTurn();
-      checkWinner(index, turn);
     } else {
-      Get.snackbar("Slot Already filled", "Choose another slot");
+      Get.snackbar("Slot Already filled", "Choose another slot",
+          backgroundColor: const Color(0xffDBA600));
     }
-    if (counter == 0) {
+
+    if (ans) {
+      showWinnerDialog(turn);
+    }
+    if (counter == 0 && !ans) {
       showGameDrawSnackBar();
     }
   }
 
   void showGameDrawSnackBar() {
     //if board is filled, show game draw
-    Get.snackbar("Game is draw", "");
-    timer?.cancel();
+    Get.snackbar("Game is draw", "No one is winner",
+        backgroundColor: const Color(0xffDBA600));
+    reset();
   }
 
-  void checkWinner(int index, int turn) {
+  bool checkWinner(int index, int turn) {
     bool horizontal = checkWinnerHorizontally(index, turn);
     bool vertical = checkWinnerVertically(index, turn);
     bool leftDiagonal = checkWinnerLeftDiagonal(index, turn);
     bool rightDiagonal = checkWinnerRightDiagonal(index, turn);
-    if (horizontal || vertical || leftDiagonal || rightDiagonal) {
-      showWinnerDialog(turn);
-    }
+    return (horizontal || vertical || leftDiagonal || rightDiagonal);
   }
 
   bool checkWinnerHorizontally(int index, int turn) {
     Pair coord = findCoord(index);
     int counter = 0;
     for (int i = coord.y; i < 7; i++) {
-      // if x=1 and y=4 -> index=14-(2)=12
       int ind = 7 * coord.x + i;
       if (slotState[ind] == turn) {
         counter++;
@@ -218,10 +233,46 @@ class HomepageController extends GetxController {
     return counter - 1 >= 4;
   }
 
-  void showWinnerDialog(int turn) {
-    /// Due to shortage of time,  replacing dialog with snackbar
-    Get.snackbar("${playerMapper[turn]} wins", "");
-    timer?.cancel();
+  void showWinnerDialog(int turn) async {
+    await showDialog<void>(
+      barrierDismissible: false,
+      context: Get.context!,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: SizedBox(
+            height: 100,
+            width: 100,
+            child: Stack(
+              children: [
+                Container(
+                  height: 50,
+                  width: 50,
+                  decoration: BoxDecoration(
+                    color: Colors.black,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                Positioned(
+                  top: 0,
+                  right: 0,
+                  child: IconButton(
+                    onPressed: () {
+                      reset();
+                      Get.back();
+                    },
+                    icon: const Icon(
+                      FontAwesomeIcons.x,
+                      size: 14,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
   }
 
   bool isSpacePresentInColumn(index) {
@@ -230,7 +281,7 @@ class HomepageController extends GetxController {
 
   Pair findCoord(int index) {
     int x = index ~/ 7;
-    int y = index - 7 * x;
+    int y = index % 7;
     return Pair(x, y);
   }
 }

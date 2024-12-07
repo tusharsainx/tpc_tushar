@@ -1,8 +1,8 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tpc_assignment/assets/assets_helper.dart';
 import 'package:tpc_assignment/homepage/game_appbar_retry_action.dart';
 import 'package:tpc_assignment/homepage/game_appbar_timer.dart';
 import 'package:tpc_assignment/homepage/homepage_controller.dart';
@@ -111,7 +111,7 @@ class GameHomepage extends GetView<HomepageController> {
           ),
           const Spacer(),
           Container(
-            width: MediaQuery.of(context).size.height  * 0.8,
+            width: MediaQuery.of(context).size.height * 0.8,
             height: MediaQuery.of(context).size.width * 0.35,
             decoration: BoxDecoration(
                 color: const Color(0xffDBA600),
@@ -127,13 +127,25 @@ class GameHomepage extends GetView<HomepageController> {
                   onTap: () =>
                       controller.dropDisk(index, controller.currentTurn.value),
                   child: Obx(() {
-                    return Container(
-                      height: 75,
-                      width: 75,
-                      decoration: BoxDecoration(
-                          color: Color(controller.colors[index]),
-                          shape: BoxShape.circle),
-                    );
+                    return controller.colors[index] == 0xff37311B
+                        ? Container(
+                            height: 75,
+                            width: 75,
+                            decoration: BoxDecoration(
+                                color: Color(controller.colors[index]),
+                                shape: BoxShape.circle),
+                          )
+                        : Container(
+                            height: 75,
+                            width: 75,
+                            decoration:
+                                const BoxDecoration(shape: BoxShape.circle),
+                            child: SvgPicture.asset(
+                              controller.colors[index] == 0xff90EE90
+                                  ? AssetHelper.green
+                                  : AssetHelper.red,
+                            ),
+                          );
                   }),
                 );
               }).toList(),

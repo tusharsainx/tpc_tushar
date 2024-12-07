@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'TPC_Tushar_assignment',
+      title: 'Connect 4',
       initialRoute: "/home",
       getPages: [
         GetPage(
