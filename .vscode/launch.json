@@ -5,18 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "tpc_assignment",
+            "name": "connect4 (Debug Mode)",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "tpc_assignment (profile mode)",
+            "name": "connect4 (Profile Mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "tpc_assignment (release mode)",
+            "name": "connect4 (Release Mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"

@@ -1,11 +1,11 @@
+import 'package:connect4/assets/assets_helper.dart';
+import 'package:connect4/homepage/game_appbar_retry_action.dart';
+import 'package:connect4/homepage/game_appbar_timer.dart';
+import 'package:connect4/homepage/homepage_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tpc_assignment/assets/assets_helper.dart';
-import 'package:tpc_assignment/homepage/game_appbar_retry_action.dart';
-import 'package:tpc_assignment/homepage/game_appbar_timer.dart';
-import 'package:tpc_assignment/homepage/homepage_controller.dart';
 
 class GameHomepage extends GetView<HomepageController> {
   const GameHomepage({super.key});
@@ -111,8 +111,8 @@ class GameHomepage extends GetView<HomepageController> {
           ),
           const Spacer(),
           Container(
-            width: MediaQuery.of(context).size.height * 0.8,
-            height: MediaQuery.of(context).size.width * 0.35,
+            // width: MediaQuery.of(context).size.height * 0.8,
+            // height: MediaQuery.of(context).size.width * 0.35,
             decoration: BoxDecoration(
                 color: const Color(0xffDBA600),
                 borderRadius: BorderRadius.circular(35)),

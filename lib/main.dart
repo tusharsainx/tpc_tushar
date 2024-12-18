@@ -3,8 +3,8 @@ import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
 
-import 'package:tpc_assignment/homepage/homepage.dart';
-import 'package:tpc_assignment/homepage/homepage_binding.dart';
+import 'package:connect4/homepage/homepage.dart';
+import 'package:connect4/homepage/homepage_binding.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

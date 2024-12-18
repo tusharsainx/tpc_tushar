@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:tpc_assignment/homepage/homepage_controller.dart';
+import 'package:connect4/homepage/homepage_controller.dart';
 
 class HomepageBinding extends Bindings {
   @override

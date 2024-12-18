@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tpc_assignment/assets/assets_helper.dart';
-import 'package:tpc_assignment/homepage/homepage_controller.dart';
+import 'package:connect4/assets/assets_helper.dart';
+import 'package:connect4/homepage/homepage_controller.dart';
 
 class GameAppBarTimer extends GetView<HomepageController> {
   const GameAppBarTimer({super.key});

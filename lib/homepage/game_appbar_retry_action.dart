@@ -3,8 +3,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tpc_assignment/assets/assets_helper.dart';
-import 'package:tpc_assignment/homepage/homepage_controller.dart';
+import 'package:connect4/assets/assets_helper.dart';
+import 'package:connect4/homepage/homepage_controller.dart';
 
 class GameAppBarRetry extends GetView<HomepageController> {
   const GameAppBarRetry({super.key});

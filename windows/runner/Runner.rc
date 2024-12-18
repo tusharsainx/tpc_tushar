@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "tpc_assignment" "\0"
+            VALUE "FileDescription", "connect4" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "tpc_assignment" "\0"
+            VALUE "InternalName", "connect4" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2024 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "tpc_assignment.exe" "\0"
-            VALUE "ProductName", "tpc_assignment" "\0"
+            VALUE "OriginalFilename", "connect4.exe" "\0"
+            VALUE "ProductName", "connect4" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

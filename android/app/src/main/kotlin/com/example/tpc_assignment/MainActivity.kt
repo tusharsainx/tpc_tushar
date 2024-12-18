@@ -1,4 +1,4 @@
-package com.example.tpc_assignment
+package com.example.connect4
 
 import io.flutter.embedding.android.FlutterActivity
 

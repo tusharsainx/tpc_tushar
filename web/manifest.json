@@ -1,6 +1,6 @@
 {
-    "name": "tpc_assignment",
-    "short_name": "tpc_assignment",
+    "name": "connect4",
+    "short_name": "connect4",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

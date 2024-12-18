@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:tpc_assignment/homepage/pair.dart';
+import 'package:connect4/homepage/pair.dart';
 
 class HomepageController extends GetxController {
   /// 0-> empty, 1-> red, 2-> green
